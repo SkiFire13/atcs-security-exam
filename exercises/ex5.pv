@@ -1,0 +1,66 @@
+channel c.
+
+fun senc(bitstring, bitstring): bitstring.
+reduc forall x: bitstring, y: bitstring; sdec(senc(x, y), y) = x.
+
+type pkey.
+type skey.
+fun pk(skey): pkey.
+fun aenc(bitstring, pkey): bitstring.
+reduc forall x: bitstring, y: skey; adec(aenc(x, pk(y)), y) = x.
+
+fun h(bitstring): bitstring.
+
+(* Just a helper to convert from pkey to bitstring for aenc *)
+fun bs(pkey): bitstring.
+reduc forall x: pkey; ibs(bs(x)) = x.
+
+event a_send_m(pkey, pkey, bitstring).
+event b_recv_m(pkey, pkey, bitstring).
+event a_recv_hm(pkey, pkey, bitstring).
+
+(* 1. Authentication: when B accepts m, it's certain that it comes from A *)
+query pka: pkey, pkb: pkey, m: bitstring;
+    event(b_recv_m(pka, pkb, m)) ==> event(a_send_m(pka, pkb, m)).
+
+(* 2. Integrity: A is certain that B has accepted m by receiving h(m) in (5) *)
+query pka: pkey, pkb: pkey, m: bitstring;
+    event(a_recv_hm(pka, pkb, m)) ==> event(b_recv_m(pka, pkb, m)).
+
+(* 3. Confidentiality: A and B are the only ones who know m *)
+query attacker(new m).
+
+let server(kas: bitstring, kbs: bitstring, pka: pkey, pkb: pkey) =
+    in(c, x: bitstring);
+    let (p: bitstring, =pkb) = sdec(x, kas) in
+    out(c, senc(p, kbs)).
+
+let alice(k: skey, kas: bitstring, pkb: pkey) =
+    out(c, senc((aenc(bs(pk(k)), pkb), pkb), kas));
+    in(c, x: bitstring);
+    let nb: bitstring = adec(x, k) in
+    new m: bitstring;
+    event a_send_m(pk(k), pkb, m);
+    out(c, senc(m, nb));
+    in(c, =h(m));
+    event a_recv_hm(pk(k), pkb, m).
+
+let bob(k: skey, kbs: bitstring (* , pka: pkey *)) =
+    in(c, x: bitstring);
+    let xpk: pkey = ibs(adec(sdec(x, kbs), k)) in
+    new nb: bitstring;
+    out(c, aenc(nb, xpk));
+    in(c, y: bitstring);
+    let m: bitstring = sdec(y, nb) in
+    event b_recv_m(xpk, pk(k), m);
+    out(c, h(m)).
+
+process !
+    new ska: skey;
+    new skb: skey;
+    new kas: bitstring;
+    new kbs: bitstring;
+    ! alice(ska, kas, pk(skb)) |
+    ! bob(skb, kbs (* , pk(ska) *)) |
+    ! server(kas, kbs, pk(ska), pk(skb)) |
+    ! server(kbs, kas, pk(skb), pk(ska))
