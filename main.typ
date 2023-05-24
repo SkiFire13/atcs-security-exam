@@ -5,3 +5,5 @@
   author: "Stevanato Giacomo",
   date: "2nd Semester 2022/23",
 )
+
+#include "exercises/ex1.typ"
