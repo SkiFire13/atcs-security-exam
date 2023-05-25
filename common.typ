@@ -28,4 +28,8 @@
 #let sdec = "sdec"
 #let fst = "fst"
 #let snd = "snd"
-#let tup(x, y) = $angle.l #x, #y angle.r$
+#let tup(..xs) = $angle.l #xs.pos().join(",") angle.r$
+#let ìn = "in"
+#let out = "out"
+#let ìf = "if"
+#let then = "then"
