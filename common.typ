@@ -14,7 +14,7 @@
   #v(2em)
 ]
 
-#let Itheory = text("\u{1D4D8}", font: "Times New Roman")
+#let Itheory = text("I", font: "cmsy10")
 #let DY = $italic("DY")$
 #let IDY = $Itheory_DY$
 
