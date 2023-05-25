@@ -15,6 +15,14 @@
     $))
 ]
 #solution[
-  + TODO
-  + TODO
+  + They are not statically equivalent. Consider $M = x$ and $N = h(y)$:
+    $
+      (h(senc(a, k)) != h(senc(b, k)))_phi_1 \
+      (h(senc(b, k))  = h(senc(b, k)))_phi_2
+    $
+  + They are not statically equivalent. Consider $M = x$ and $N = aenc(tup(z, c), y)$:
+    $
+      (aenc(tup(senc(a, k), c), pk(k))  = aenc(tup(senc(a, k), c), pk(k)))_phi_1 \
+      (aenc(tup(senc(b, k), c), pk(k)) != aenc(tup(senc(a, k), c), pk(k)))_phi_2
+    $
 ]
