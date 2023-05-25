@@ -1,7 +1,5 @@
 #import "/common.typ": *
 
-#let Eenc = $E_(italic("enc"))$
-
 #exercise[
   (Deduction under equational theories). Consider following equational theory $Eenc$, which correspond to the inference system $IDY$:
   $

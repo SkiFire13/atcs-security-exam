@@ -18,6 +18,8 @@
 #let DY = $italic("DY")$
 #let IDY = $Itheory_DY$
 
+#let Eenc = $E_(italic("enc"))$
+
 #let sk = $italic("sk")$
 #let pk = "pk"
 #let aenc = "aenc"
