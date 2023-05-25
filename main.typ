@@ -7,3 +7,4 @@
 )
 
 #include "exercises/ex1.typ"
+#include "exercises/ex2.typ"

@@ -24,3 +24,6 @@
 #let adec = "adec"
 #let senc = "senc"
 #let sdec = "sdec"
+#let fst = "fst"
+#let snd = "snd"
+#let tup(x, y) = $angle.l #x, #y angle.r$
