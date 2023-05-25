@@ -19,15 +19,15 @@ event a_send_m(pkey, pkey, bitstring).
 event b_recv_m(pkey, pkey, bitstring).
 event a_recv_hm(pkey, pkey, bitstring).
 
-(* 1. Authentication: when B accepts m, it's certain that it comes from A *)
+(* 1. Authentication *)
 query pka: pkey, pkb: pkey, m: bitstring;
     event(b_recv_m(pka, pkb, m)) ==> event(a_send_m(pka, pkb, m)).
 
-(* 2. Integrity: A is certain that B has accepted m by receiving h(m) in (5) *)
+(* 2. Integrity *)
 query pka: pkey, pkb: pkey, m: bitstring;
     event(a_recv_hm(pka, pkb, m)) ==> event(b_recv_m(pka, pkb, m)).
 
-(* 3. Confidentiality: A and B are the only ones who know m *)
+(* 3. Confidentiality *)
 query attacker(new m).
 
 let server(kas: bitstring, kbs: bitstring, pka: pkey, pkb: pkey) =
