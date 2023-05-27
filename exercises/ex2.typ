@@ -12,7 +12,7 @@
 ]
 #solution[
   \ #v(0.5em)
-  +
+  + \
     #move(dx: -1.3cm)[
       #set text(size: 9pt)
       #prooftree(

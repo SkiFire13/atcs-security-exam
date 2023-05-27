@@ -27,8 +27,10 @@
   let folder(acc, e) = acc + if acc != [] { linebreak() } + e
   let aligned = math.equation(block: true, numbering: none, esf.fold([], folder))
 
-  hidden
-  place(start + top, box(width: 100%, aligned))
+  box[
+    #hidden
+    #place(start + top, box(width: 100%, aligned))
+  ]
 }
 
 #let Itheory = text("I", font: "cmsy10")

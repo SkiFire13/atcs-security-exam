@@ -23,6 +23,8 @@ event a_recv_hm(pkey, pkey, bitstring).
 query pka: pkey, pkb: pkey, m: bitstring;
     inj-event(b_recv_m(pka, pkb, m)) ==> inj-event(a_send_m(pka, pkb, m)).
 
+
+
 (* 2. Integrity *)
 query pka: pkey, pkb: pkey, m: bitstring;
     inj-event(a_recv_hm(pka, pkb, m)) ==> inj-event(b_recv_m(pka, pkb, m)).

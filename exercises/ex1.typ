@@ -8,8 +8,8 @@
 ]
 #solution[
   \ #v(0.5em)
-  + 
-    #move(dx: -0.8cm)[
+  + \
+    #move(dx: -0.6cm)[
       #set text(size: 9pt)
       #prooftree(
         hspacing: 0pt,
@@ -34,5 +34,6 @@
         rule(n: 2, $s$),
       )
     ]
-  + TODO
+    #v(2em)
+  + $IDY$ is called a _local theory_ because if $S tack.r_IDY t$ then there exist a proof tree for it that uses only subterms of $S$ and $t$. This also means that a decision procedure for deduction in $IDY$ only needs to consider those subterms, thus guaranteeing termination if $S$ is finite.
 ]
