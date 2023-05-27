@@ -5,7 +5,8 @@
   #align(center)[
     $(M =_Eenc N)_phi_1$ and $(M !=_Eenc N)_phi_2$ or viceversa
   ]
-  + #box(width: 100%, align(center, $
+  #v(0.5em)
+  + #box(width: 100%, inset: (bottom: 0.5em), align(center, $
       phi_1 = nu a, b, k. { h(senc(a, k)) \/ x, senc(b, k) \/ y } \
       phi_2 = nu a, b, k. { h(senc(b, k)) \/ x, senc(b, k) \/ y }
     $))
@@ -15,6 +16,7 @@
     $))
 ]
 #solution[
+  \ #v(0.5em)
   + They are not statically equivalent. Consider $M = x$ and $N = h(y)$:
     $
       (h(senc(a, k)) != h(senc(b, k)))_phi_1 \

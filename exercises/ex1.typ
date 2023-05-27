@@ -7,6 +7,7 @@
   + Explain why $IDY$ is called a _local theory_.
 ]
 #solution[
+  \ #v(0.5em)
   + 
     #move(dx: -0.8cm)[
       #set text(size: 9pt)

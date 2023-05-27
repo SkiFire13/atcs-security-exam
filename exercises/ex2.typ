@@ -11,6 +11,7 @@
   + Convert the proof tree of Exercise 1 into a proof tree that uses the equational theory (See $S tack.r_Eenc t$, [2] page 23).
 ]
 #solution[
+  \ #v(0.5em)
   +
     #move(dx: -1.3cm)[
       #set text(size: 9pt)

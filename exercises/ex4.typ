@@ -1,7 +1,7 @@
 #import "/common.typ": *
 
 #exercise[
-  (Observational equivalence).
+  (Observational equivalence). \ #v(0.5em)
   + Show that $A approx.not B$
     $
       & A = ìn(c, x); ìn(c, y); mu s; mu k; out(c, pk(k)); ìf x eq.not y then out(c, aenc(tup(x, y, s), pk(k))) \
