@@ -21,11 +21,11 @@ event a_recv_hm(pkey, pkey, bitstring).
 
 (* 1. Authentication *)
 query pka: pkey, pkb: pkey, m: bitstring;
-    event(b_recv_m(pka, pkb, m)) ==> event(a_send_m(pka, pkb, m)).
+    inj-event(b_recv_m(pka, pkb, m)) ==> inj-event(a_send_m(pka, pkb, m)).
 
 (* 2. Integrity *)
 query pka: pkey, pkb: pkey, m: bitstring;
-    event(a_recv_hm(pka, pkb, m)) ==> event(b_recv_m(pka, pkb, m)).
+    inj-event(a_recv_hm(pka, pkb, m)) ==> inj-event(b_recv_m(pka, pkb, m)).
 
 (* 3. Confidentiality *)
 query attacker(new m).
@@ -45,7 +45,7 @@ let alice(k: skey, kas: bitstring, pkb: pkey) =
     in(c, =h(m));
     event a_recv_hm(pk(k), pkb, m).
 
-let bob(k: skey, kbs: bitstring (* , pka: pkey *)) =
+let bob(k: skey, kbs: bitstring) =
     in(c, x: bitstring);
     let xpk: pkey = ibs(adec(sdec(x, kbs), k)) in
     new nb: bitstring;
@@ -61,6 +61,6 @@ process !
     new kas: bitstring;
     new kbs: bitstring;
     ! alice(ska, kas, pk(skb)) |
-    ! bob(skb, kbs (* , pk(ska) *)) |
+    ! bob(skb, kbs) |
     ! server(kas, kbs, pk(ska), pk(skb)) |
     ! server(kbs, kas, pk(skb), pk(ska))

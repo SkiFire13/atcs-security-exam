@@ -14,6 +14,23 @@
   #v(2em)
 ]
 
+#let multieq(numbering: none, es) = {
+  let concat(a) = a.slice(1).fold(a.first(), (acc, x) => acc + x)
+  set math.equation(numbering: numbering) 
+  let esf = es.children.filter(x => x != [ ])
+
+  let hidden = box[
+    #show math.equation: set block(spacing: 0.65em)
+    #concat(esf.map(e => $ #hide(e.body) $))
+  ]
+
+  let folder(acc, e) = acc + if acc != [] { linebreak() } + e
+  let aligned = math.equation(block: true, numbering: none, esf.fold([], folder))
+
+  hidden
+  place(start + top, box(width: 100%, aligned))
+}
+
 #let Itheory = text("I", font: "cmsy10")
 #let DY = $italic("DY")$
 #let IDY = $Itheory_DY$
