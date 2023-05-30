@@ -1,0 +1,20 @@
+fun senc/2.
+fun sdec/2.
+fun aenc/2.
+fun adec/2.
+fun pk/1.
+fun h/1.
+
+equation sdec(senc(x, y), y) = x.
+equation adec(aenc(x, pk(y)), y) = x.
+
+free c.
+
+process
+	in(c, x);
+	in(c, y);
+	new s;
+	new k;
+	out(c, pk(k));
+	if x <> y then
+	out(c, aenc(choice[(x, y), (x, y, s)], pk(k)))
