@@ -19,12 +19,12 @@
   \ #v(0.5em)
   + They are not statically equivalent. Consider $M = x$ and $N = h(y)$:
     $
-      (h(senc(a, k)) != h(senc(b, k)))_phi_1 \
-      (h(senc(b, k))  = h(senc(b, k)))_phi_2
+      (h(senc(a, k)) !=_Eenc h(senc(b, k)))_phi_1 \
+      (h(senc(b, k))  =_Eenc h(senc(b, k)))_phi_2
     $
   + They are not statically equivalent. Consider $M = x$ and $N = aenc(tup(z, c), y)$:
     $
-      (aenc(tup(senc(a, k), c), pk(k))  = aenc(tup(senc(a, k), c), pk(k)))_phi_1 \
-      (aenc(tup(senc(b, k), c), pk(k)) != aenc(tup(senc(a, k), c), pk(k)))_phi_2
+      (aenc(tup(senc(a, k), c), pk(k))  =_Eenc aenc(tup(senc(a, k), c), pk(k)))_phi_1 \
+      (aenc(tup(senc(b, k), c), pk(k)) !=_Eenc aenc(tup(senc(a, k), c), pk(k)))_phi_2
     $
 ]
