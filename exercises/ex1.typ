@@ -35,5 +35,5 @@
       )
     ]
     #v(2em)
-  + $IDY$ is called a _local theory_ because if $S tack.r_IDY t$ then there exist a proof tree for it that uses only subterms of $S$ and $t$. This also means that a decision procedure for deduction in $IDY$ only needs to consider those subterms, thus guaranteeing termination if $S$ is finite.
+  + $IDY$ is called a _local theory_ because if $S tack.r_IDY t$ is derivable then there exist a proof tree for it that uses only subterms of $S$ and $t$. This also means that a decision procedure for deduction in $IDY$ only needs to consider those subterms, guaranteeing termination if $S$ is finite and thus decidability.
 ]
