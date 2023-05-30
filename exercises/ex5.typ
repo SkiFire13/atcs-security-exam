@@ -49,7 +49,7 @@
       (
         highlight_regex(regex("\(\*.*\*\)"), rgb("#6A9955")),
         highlight_regex(regex("inj-event"), rgb("#f44747")),
-        highlight_regex(regex("type|fun|reduc|forall|channel|event|query|attacker|new|let| in|out|process|bang|!|\|"), rgb("#f44747")),
+        highlight_regex(regex("type|fun|reduc|forall|channel|event|query|attacker|new|let| in|out|process|bang|!|\||;|\.|:"), rgb("#f44747")),
         highlight_regex(regex("bitstring|pkey|skey"), rgb("#267f99")),
       )
     )
